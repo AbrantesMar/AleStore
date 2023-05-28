@@ -26,7 +26,11 @@
 		15B643B32A231528007D9471 /* InfraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B643B22A231528007D9471 /* InfraTests.swift */; };
 		15B643BD2A231650007D9471 /* ExtensionsHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B643BC2A231650007D9471 /* ExtensionsHelpers.swift */; };
 		15B643C22A23184B007D9471 /* AleData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 15B643C02A23184B007D9471 /* AleData.xcdatamodeld */; };
-		15B643C52A2318B8007D9471 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B643C42A2318B8007D9471 /* Item.swift */; };
+		15B643C52A2318B8007D9471 /* Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B643C42A2318B8007D9471 /* Root.swift */; };
+		15B66D912A23D86E004F3719 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B66D902A23D86E004F3719 /* Product.swift */; };
+		15B66D932A23D8A1004F3719 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B66D922A23D8A1004F3719 /* Size.swift */; };
+		15B66D972A23E930004F3719 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B66D962A23E930004F3719 /* Model.swift */; };
+		15B66D992A23E9C9004F3719 /* DomainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B66D982A23E9C9004F3719 /* DomainError.swift */; };
 		15E9BB7507A7840F1A042C02 /* Pods_AleStoreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C05580001C7B35A7080D9745 /* Pods_AleStoreTests.framework */; };
 		262A44E31F34EAFAAB0E7812 /* Pods_AleStore_AleStoreUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C430DD24F8DAB9C07112B /* Pods_AleStore_AleStoreUITests.framework */; };
 		69F701A1940D78880EC8F0EA /* Pods_Infra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC5327D3530E263B78C8387B /* Pods_Infra.framework */; };
@@ -94,7 +98,11 @@
 		15B643B22A231528007D9471 /* InfraTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfraTests.swift; sourceTree = "<group>"; };
 		15B643BC2A231650007D9471 /* ExtensionsHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsHelpers.swift; sourceTree = "<group>"; };
 		15B643C12A23184B007D9471 /* AleData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AleData.xcdatamodel; sourceTree = "<group>"; };
-		15B643C42A2318B8007D9471 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		15B643C42A2318B8007D9471 /* Root.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Root.swift; sourceTree = "<group>"; };
+		15B66D902A23D86E004F3719 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		15B66D922A23D8A1004F3719 /* Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
+		15B66D962A23E930004F3719 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		15B66D982A23E9C9004F3719 /* DomainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainError.swift; sourceTree = "<group>"; };
 		2E90508EEA0B6C200C1EC6CD /* Pods_Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C45D6B6EEF9E9EC7799148C /* Pods-Data-DataTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Data-DataTests.release.xcconfig"; path = "Target Support Files/Pods-Data-DataTests/Pods-Data-DataTests.release.xcconfig"; sourceTree = "<group>"; };
 		3DFC813742D27EC9AF2407C0 /* Pods-AleStoreTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AleStoreTests.release.xcconfig"; path = "Target Support Files/Pods-AleStoreTests/Pods-AleStoreTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -363,9 +371,29 @@
 		15B643C32A23186D007D9471 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				15B643C42A2318B8007D9471 /* Item.swift */,
+				15B66D952A23E91F004F3719 /* Model */,
+				15B66D942A23E916004F3719 /* Error */,
 			);
 			path = Source;
+			sourceTree = "<group>";
+		};
+		15B66D942A23E916004F3719 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				15B66D982A23E9C9004F3719 /* DomainError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		15B66D952A23E91F004F3719 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				15B643C42A2318B8007D9471 /* Root.swift */,
+				15B66D902A23D86E004F3719 /* Product.swift */,
+				15B66D922A23D8A1004F3719 /* Size.swift */,
+				15B66D962A23E930004F3719 /* Model.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		22304E9194F24A1CB154421F /* Pods */ = {
@@ -617,6 +645,7 @@
 					};
 					15B643A32A231528007D9471 = {
 						CreatedOnToolsVersion = 14.3;
+						LastSwiftMigration = 1430;
 					};
 					15B643AC2A231528007D9471 = {
 						CreatedOnToolsVersion = 14.3;
@@ -941,7 +970,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15B643C52A2318B8007D9471 /* Item.swift in Sources */,
+				15B66D992A23E9C9004F3719 /* DomainError.swift in Sources */,
+				15B643C52A2318B8007D9471 /* Root.swift in Sources */,
+				15B66D932A23D8A1004F3719 /* Size.swift in Sources */,
+				15B66D912A23D86E004F3719 /* Product.swift in Sources */,
+				15B66D972A23E930004F3719 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1438,6 +1471,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 42C1A36259670B5F8001676B /* Pods-Infra.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1464,6 +1498,7 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1474,6 +1509,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 09C8A3B8AC38D194305A15FF /* Pods-Infra.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;

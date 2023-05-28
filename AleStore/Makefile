@@ -16,8 +16,8 @@ kill_pod_open:
 	open AleStore.xcworkspace
 
 install:
-	# For error: Analyzing dependencies [!] Unable to determine the platform for the `AleStore` target.
-	# in command line, please, past: "platform :ios, '16.0'", in seconde line to Podfile.
+# For error: Analyzing dependencies [!] Unable to determine the platform for the `AleStore` target.
+# in command line, please, past: "platform :ios, '16.0'", in seconde line to Podfile.
 	pod install
 	open AleStore.xcworkspace
 
