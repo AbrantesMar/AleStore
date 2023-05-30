@@ -49,6 +49,7 @@
 		6F1452EF02C259A8D0676132 /* Pods_AleStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5AFFC36D793502DE13096D /* Pods_AleStore.framework */; };
 		A8E39F4FB07F0EF74571336D /* Pods_Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7BB7F78B5D7F170167FEC96 /* Pods_Domain.framework */; };
 		C05D5699CE15BEF08B829254 /* Pods_Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E90508EEA0B6C200C1EC6CD /* Pods_Data.framework */; };
+		C3731E25363D6BBFD65F4897 /* Pods_Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1550AF742A25930E001E6949 /* Pods_Domain.framework */; };
 		F4BB0A085AB56AF64C0DBF7B /* Pods_Infra_InfraTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48B6F7E17E366F38AAD4847D /* Pods_Infra_InfraTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -215,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8E39F4FB07F0EF74571336D /* Pods_Domain.framework in Frameworks */,
+				C3731E25363D6BBFD65F4897 /* Pods_Domain.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -691,7 +693,7 @@
 				15B643A92A231528007D9471 /* Sources */,
 				15B643AA2A231528007D9471 /* Frameworks */,
 				15B643AB2A231528007D9471 /* Resources */,
-				47641A300FEE9FECFD136FFA /* [CP] Embed Pods Frameworks */,
+				1E7CA1E9A4A7E405B03050EE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -896,6 +898,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		1E7CA1E9A4A7E405B03050EE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Infra-InfraTests/Pods-Infra-InfraTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Infra-InfraTests/Pods-Infra-InfraTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Infra-InfraTests/Pods-Infra-InfraTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		224F7B95612DB091FF9F86B3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -960,23 +979,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		47641A300FEE9FECFD136FFA /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Infra-InfraTests/Pods-Infra-InfraTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Infra-InfraTests/Pods-Infra-InfraTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Infra-InfraTests/Pods-Infra-InfraTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5426CCCC936EDCB3DC1DE027 /* [CP] Check Pods Manifest.lock */ = {
