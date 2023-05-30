@@ -6,9 +6,12 @@
 //
 
 // MARK: - Root
-struct Root: Model {
-    public var id: Int
-    let products: [Product]
+public struct Root: Model {
+    var products: [Product]
+    
+    enum CodingKeys: String, CodingKey {
+        case products
+    }
 }
 
 

@@ -6,19 +6,19 @@
 //
 
 // MARK: - Product
-struct Product: Model {
-    let name: String
-    let style: String
-    let codeColor: String
-    let colorSlug: String
-    let color: String
-    let image: String
-    let onSale: Bool
-    let regularPrice: String
-    let actualPrice: String
-    let discountPercentage: String
-    let installments: String
-    let sizes: [Size]
+public struct Product: Model {
+    var name: String
+    var style: String
+    var codeColor: String
+    var colorSlug: String
+    var color: String
+    var image: String
+    var onSale: Bool
+    var regularPrice: String
+    var actualPrice: String
+    var discountPercentage: String
+    var installments: String
+    var sizes: [Size]
 
     enum CodingKeys: String, CodingKey {
         case name, style

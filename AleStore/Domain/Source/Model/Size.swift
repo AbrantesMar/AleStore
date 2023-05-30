@@ -7,7 +7,7 @@
 
 // MARK: - Size
 struct Size: Model {
-    let available: Bool
-    let size: String
-    let sku: String
+    var available: Bool
+    var size: String
+    var sku: String
 }
