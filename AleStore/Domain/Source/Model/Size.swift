@@ -6,7 +6,7 @@
 //
 
 // MARK: - Size
-struct Size: Model {
+public struct Size: Model {
     var available: Bool
     var size: String
     var sku: String

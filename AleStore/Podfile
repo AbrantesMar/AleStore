@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '16.0'
+# platform :ios, '16.0'
 
 target 'AleStore' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -23,6 +23,7 @@ target 'Data' do
   use_frameworks!
 
   # Pods for Data
+  pod 'Alamofire', '5.7.1'
 
   target 'DataTests' do
     # Pods for testing

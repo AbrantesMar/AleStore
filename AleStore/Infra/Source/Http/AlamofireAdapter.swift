@@ -10,7 +10,7 @@ import Alamofire
 import Domain
 
 protocol HttpClientProtocol {
-    func fecth(url: URL, completion: @escaping (Result<Root?, HttpError>) -> Void)
+    func fecth(url: URL, completion: @escaping (Result<ProductsResult?, HttpError>) -> Void)
 }
 
 public final class AlamofireAdapter: HttpClientProtocol {
@@ -20,8 +20,8 @@ public final class AlamofireAdapter: HttpClientProtocol {
         self.session = session
     }
     
-    func fecth(url: URL, completion: @escaping (Result<Root?, HttpError>) -> Void) {
-        session.request(url).validate(statusCode: 200...299).responseDecodable(of: Root.self) { response in
+    func fecth(url: URL, completion: @escaping (Result<ProductsResult?, HttpError>) -> Void) {
+        session.request(url).validate(statusCode: 200...299).responseDecodable(of: ProductsResult.self) { response in
             print(response)
             switch  response.result {
             case .failure(_): completion(.failure(.badRequest))

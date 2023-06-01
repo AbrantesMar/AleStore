@@ -9,7 +9,7 @@ import Foundation
 import Domain
 
 public protocol CatalogListProtocol {
-    func getList(completion: @escaping (Root?) -> Void)
+    func getList(completion: @escaping (ProductsResult?) -> Void)
 }
 
 public final class CatalogList: CatalogListProtocol {
@@ -24,7 +24,7 @@ public final class CatalogList: CatalogListProtocol {
         httpClientProtocol = AlamofireAdapter()
     }
     
-    public func getList(completion: @escaping (Root?) -> Void) {
+    public func getList(completion: @escaping (ProductsResult?) -> Void) {
         
         httpClientProtocol.fecth(url: request.path) { result in
             self.handleProducts(result: result) { root in
@@ -33,8 +33,8 @@ public final class CatalogList: CatalogListProtocol {
         }
     }
     
-    private func handleProducts(result: Result<Root?, HttpError>,
-                                completion: @escaping (Root?) -> Void) {
+    private func handleProducts(result: Result<ProductsResult?, HttpError>,
+                                completion: @escaping (ProductsResult?) -> Void) {
         switch result {
         case .failure(let error):
             print("Request error: \(error.localizedDescription)")
