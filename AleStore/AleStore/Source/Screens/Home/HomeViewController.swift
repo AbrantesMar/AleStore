@@ -18,8 +18,8 @@ class HomeViewController: UIViewController {
     
     private lazy var menuView: MenuView = {
         let menu = MenuView()
-        menu.delegate = self
         menu.translatesAutoresizingMaskIntoConstraints = false
+        menu.delegate = self
         menu.isUserInteractionEnabled = true
         return menu
     }()
@@ -27,6 +27,7 @@ class HomeViewController: UIViewController {
     private lazy var tableView: TableView = {
         let tableView = TableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.delegate = self
         return tableView
     }()
 
@@ -67,17 +68,16 @@ extension HomeViewController: ViewManager {
 
 extension HomeViewController: MenuViewDelegate {
     func goItensSale() {
-        if let navigator = navigationController {
-            let itemViewController = ItemViewController()
-            navigator.pushViewController(itemViewController, animated: true)
-        }
+        flowController?.toItemView()
     }
     
     func goShopCar() {
-        let itemViewController = ItemViewController()
-        let navVC = UINavigationController(rootViewController: itemViewController)
-        present(navVC, animated: true)
+        flowController?.toItemView()
     }
-    
-    
+}
+
+extension HomeViewController: TableViewDelegate {
+    func selectedItem() {
+        flowController?.toItemView()
+    }
 }

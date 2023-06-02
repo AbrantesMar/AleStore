@@ -8,7 +8,13 @@
 import Foundation
 import UIKit
 
+public protocol TableViewDelegate {
+    func selectedItem()
+}
+
 public class TableView: UIView {
+    
+    public var delegate: TableViewDelegate?
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
@@ -61,4 +67,7 @@ extension TableView: UITableViewDelegate, UITableViewDataSource {
         return 135
     }
     
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.selectedItem()
+    }
 }

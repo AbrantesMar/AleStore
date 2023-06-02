@@ -40,7 +40,7 @@ public class ProductItemView: UIView {
     private lazy var titleLabel: UILabel = {
         let titleView = UILabel()
         titleView.translatesAutoresizingMaskIntoConstraints = false
-        titleView.text = "Name Item"
+        titleView.text = "Nome Item"
         return titleView
     }()
     
@@ -63,15 +63,17 @@ public class ProductItemView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Sale"
+        label.backgroundColor = .red
         return label
     }()
     
-    private lazy var buttonSelectedView: UIButton = {
-        let buttonView = UIButton()
-        buttonView.translatesAutoresizingMaskIntoConstraints = false
-        let chevron = UIImage(named: "chevron-right.png")
-        buttonView.setImage(chevron, for: .normal)
-        return buttonView
+    private lazy var textInput: UITextView = {
+        let input = UITextView()
+        input.translatesAutoresizingMaskIntoConstraints = false
+        input.isScrollEnabled = false
+        input.backgroundColor = .lightGray
+        input.textAlignment = .center
+        return input
     }()
     
     private lazy var buttonDeleteView: UIButton = {
@@ -103,7 +105,7 @@ extension ProductItemView: ViewManager {
         contentInfo.addSubview(saleLabel)
 
         super.addSubview(contentButton)
-        contentButton.addSubview(buttonSelectedView)
+        contentButton.addSubview(textInput)
         contentButton.addSubview(buttonDeleteView)
         
     }
@@ -148,14 +150,14 @@ extension ProductItemView: ViewManager {
             contentButton.topAnchor.constraint(equalTo: topAnchor, constant: 30),
             contentButton.leadingAnchor.constraint(equalTo: contentInfo.trailingAnchor, constant: 10),
             
-            buttonSelectedView.widthAnchor.constraint(equalTo: contentButton.widthAnchor),
-            buttonSelectedView.heightAnchor.constraint(equalToConstant: 30),
-            buttonSelectedView.topAnchor.constraint(equalTo: contentButton.topAnchor),
-            buttonSelectedView.leadingAnchor.constraint(equalTo: contentButton.leadingAnchor),
+            textInput.widthAnchor.constraint(equalTo: contentButton.widthAnchor),
+            textInput.heightAnchor.constraint(equalToConstant: 30),
+            textInput.topAnchor.constraint(equalTo: contentButton.topAnchor),
+            textInput.leadingAnchor.constraint(equalTo: contentButton.leadingAnchor),
             
             buttonDeleteView.widthAnchor.constraint(equalTo: contentButton.widthAnchor),
             buttonDeleteView.heightAnchor.constraint(equalToConstant: 30),
-            buttonDeleteView.topAnchor.constraint(equalTo: buttonSelectedView.bottomAnchor, constant: 40),
+            buttonDeleteView.topAnchor.constraint(equalTo: textInput.bottomAnchor, constant: 40),
             buttonDeleteView.leadingAnchor.constraint(equalTo: contentButton.leadingAnchor)
 
         ])

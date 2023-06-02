@@ -13,4 +13,9 @@ extension UIViewController {
         let application = UIApplication.shared.delegate as! AppDelegate
         return application.persistentContainer.viewContext
     }
+    
+    var flowController: AppDelegateFlowController? {
+        let application = UIApplication.shared.delegate as! AppDelegate
+        return application.flowController 
+    }
 }
