@@ -1,5 +1,5 @@
 //
-//  IconButton.swift
+//  IconButtonView.swift
 //  AleStore
 //
 //  Created by Márcio Abrantes on 01/06/23.
@@ -8,14 +8,13 @@
 import Foundation
 import UIKit
 
-public class IconButton: UIView {
+public class IconButtonView: UIView {
     private var icon: String = ""
     
     private lazy var iconView: UIImageView = {
         let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = UIView.ContentMode.scaleAspectFit
-        //let bagSale = UIImage(named: "shopping-cart.png")
         let bagSale = UIImage(named: icon)
         image.image = bagSale
         return image
@@ -32,7 +31,7 @@ public class IconButton: UIView {
     }
 }
 
-extension IconButton: ViewManager {
+extension IconButtonView: ViewManager {
     public func viewHierarchy() {
         super.addSubview(iconView)
     }
@@ -46,5 +45,4 @@ extension IconButton: ViewManager {
             iconView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30)
         ])
     }
-    
 }
