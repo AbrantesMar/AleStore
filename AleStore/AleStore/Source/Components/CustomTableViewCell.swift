@@ -11,7 +11,7 @@ import UIKit
 class CustomTableViewCell: UITableViewCell {
     static let identifier: String = "CustomTableViewCell"
     
-    private lazy var productView: ProductItemView = {
+    public lazy var productView: ProductItemView = {
         let view = ProductItemView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view

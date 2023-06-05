@@ -6,7 +6,10 @@ target 'AleStore' do
   use_frameworks!
 
   # Pods for AleStore
-
+  pod 'Alamofire', '5.7.1'
+  pod 'RxSwift', '6.5.0'
+  pod 'RxCocoa', '6.5.0'
+  
   target 'AleStoreTests' do
     inherit! :search_paths
     # Pods for testing

@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Domain
 
 public protocol CatalogListProtocol {
     func getList(completion: @escaping (ProductsResult?) -> Void)

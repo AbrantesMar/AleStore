@@ -6,12 +6,17 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
-class HomeViewController: UIViewController {
+public class HomeViewController: UIViewController, UIScrollViewDelegate {
+    
+    var viewModel: HomeViewModel?
+    let disposeBag = DisposeBag()
+    
     private lazy var contentArea: UIView = {
         let contentArea = UIView()
         contentArea.translatesAutoresizingMaskIntoConstraints = false
-        contentArea.backgroundColor = .white
         contentArea.isUserInteractionEnabled = true
         return contentArea
     }()
@@ -30,21 +35,43 @@ class HomeViewController: UIViewController {
         tableView.delegate = self
         return tableView
     }()
-
-    override func viewDidLoad() {
+    
+    public init(viewModel: HomeViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    public override func viewDidLoad() {
         super.viewDidLoad()
+        
         setup()
     }
 }
 
 extension HomeViewController: ViewManager {
-    func viewHierarchy() {
+    public func bindViewModel() {
+        
+        tableView.tableView.rx.setDelegate(tableView.self).disposed(by: disposeBag)
+        
+        viewModel?.products.bind(to: tableView.tableView.rx.items(cellIdentifier: CustomTableViewCell.identifier, cellType: CustomTableViewCell.self)) { [weak self] (row,item,cell) in
+            cell.productView.titleLabel.text = item.name
+            cell.productView.priceLabel.text = item.regularPrice
+            cell.productView.priceSaleLabel.text = item.actualPrice
+            cell.productView.saleLabel.isHidden = !item.onSale
+            //cell.productView.imageView.image = self?.viewModel.makeImageToUrlSession(urlString: item.image)
+        }.disposed(by: disposeBag)
+    }
+    public func viewHierarchy() {
         view.addSubview(contentArea)
         contentArea.addSubview(menuView)
         contentArea.addSubview(tableView)
     }
     
-    func setupConstraints() {
+    public func setupConstraints() {
         NSLayoutConstraint.activate([
             contentArea.topAnchor.constraint(equalTo: view.topAnchor),
             contentArea.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
@@ -67,17 +94,18 @@ extension HomeViewController: ViewManager {
 }
 
 extension HomeViewController: MenuViewDelegate {
-    func goItensSale() {
-        flowController?.toItemView()
+    public func goItensSale() {
+        self.tableView.tableView.reloadData()
+        //flowController?.toShopCartView()
     }
     
-    func goShopCar() {
-        flowController?.toItemView()
+    public func goShopCar() {
+        flowController?.toItemView(indexPath: [0])
     }
 }
 
 extension HomeViewController: TableViewDelegate {
-    func selectedItem() {
-        flowController?.toItemView()
+    public func selectedItem(indexPath: [Int]) {
+        flowController?.toItemView(indexPath: indexPath)
     }
 }

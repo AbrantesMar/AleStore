@@ -12,10 +12,14 @@ public class AppDelegateFlowController: UIViewController {
     public var navigation: UINavigationController?
     
     public override func viewDidLoad() {
+        AleStoreFactory.makeRegisterServices()
         if self.navigation == nil {
             super.viewDidLoad()
             
-            let uiNavigationController = UINavigationController(rootViewController: HomeViewController())
+            let viewModel = HomeViewModel(productRepositoryProtocol: AleStoreFactory.makeProductRepository())
+            viewModel.getItems()
+            let homeController = HomeViewController(viewModel: viewModel)
+            let uiNavigationController = UINavigationController(rootViewController: homeController)
             uiNavigationController.setNavigationBarHidden(false, animated: true)
             self.navigation = uiNavigationController
         }
@@ -26,8 +30,20 @@ public class AppDelegateFlowController: UIViewController {
         return self
     }
     
+    public func toItemView(indexPath: [Int]) {
+        let view = ItemViewController()
+        AleStoreFactory.makeRegisterServices()
+        let viewModel = ItemViewModel(indexPath: indexPath, productRepositoryProtocol: AleStoreFactory.makeProductRepository())
+        viewModel.getItems()
+        view.viewModel = viewModel
+        navigation?.pushViewController(view, animated: true)
+    }
+    
     public func toItemView() {
         let view = ItemViewController()
+        AleStoreFactory.makeRegisterServices()
+        let viewModel = ItemViewModel(indexPath: [0], productRepositoryProtocol: AleStoreFactory.makeProductRepository())
+        view.viewModel = viewModel
         navigation?.pushViewController(view, animated: true)
     }
 

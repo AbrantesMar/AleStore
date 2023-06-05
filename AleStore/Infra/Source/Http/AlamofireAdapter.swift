@@ -7,7 +7,6 @@
 
 import Foundation
 import Alamofire
-import Domain
 
 protocol HttpClientProtocol {
     func fecth(url: URL, completion: @escaping (Result<ProductsResult?, HttpError>) -> Void)

@@ -9,10 +9,12 @@ import Foundation
 import UIKit
 
 public class ProductItemView: UIView {
+    public var isCartType: Bool = false
+    
     private lazy var contentImage: UIView = {
         let content = UIView()
         content.translatesAutoresizingMaskIntoConstraints = false
-        content.backgroundColor = .lightGray
+        content.backgroundColor = .white
         return content
     }()
     
@@ -25,10 +27,11 @@ public class ProductItemView: UIView {
     private lazy var contentButton: UIView = {
         let contentInfo = UIView()
         contentInfo.translatesAutoresizingMaskIntoConstraints = false
+        contentInfo.isHidden = !isCartType
         return contentInfo
     }()
     
-    private lazy var imageView: UIImageView = {
+    public lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         let image = UIImage(named: "foto.jpg")
@@ -37,32 +40,29 @@ public class ProductItemView: UIView {
         return imageView
     }()
     
-    private lazy var titleLabel: UILabel = {
+    public lazy var titleLabel: UILabel = {
         let titleView = UILabel()
         titleView.translatesAutoresizingMaskIntoConstraints = false
-        titleView.text = "Nome Item"
         return titleView
     }()
     
-    private lazy var priceLabel: UILabel = {
+    public lazy var priceLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "R$ 50,00"
         label.textColor = .lightGray
         return label
     }()
     
-    private lazy var priceSaleLabel: UILabel = {
+    public lazy var priceSaleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "R$ 30,00"
         return label
     }()
     
-    private lazy var saleLabel: UILabel = {
+    public lazy var saleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Sale"
+        label.text = "Promoção"
         label.backgroundColor = .red
         return label
     }()
@@ -95,6 +95,7 @@ public class ProductItemView: UIView {
 }
 
 extension ProductItemView: ViewManager {
+    
     public func viewHierarchy() {
         super.addSubview(contentImage)
         contentImage.addSubview(imageView)

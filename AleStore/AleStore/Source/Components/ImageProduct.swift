@@ -15,12 +15,10 @@ public class ImageProduct: UIView {
         return view
     }()
     
-    private lazy var imageView: UIImageView = {
+    public lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        let image = UIImage(named: "creed.jpg")
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = image
+        imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = .lightGray
         return imageView
     }()
@@ -31,6 +29,7 @@ public class ImageProduct: UIView {
         view.backgroundColor = .red
         view.alpha = 0.9
         view.layer.opacity = 0.5
+        view.isHidden = true
         return view
     }()
     

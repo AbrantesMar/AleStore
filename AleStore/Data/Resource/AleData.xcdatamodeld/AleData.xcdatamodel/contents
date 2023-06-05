@@ -18,10 +18,13 @@
     <entity name="RootData" representedClassName="RootData" syncable="YES" codeGenerationType="class">
         <relationship name="products" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProductData"/>
     </entity>
+    <entity name="ShopCart" representedClassName="ShopCart" syncable="YES" codeGenerationType="class">
+        <relationship name="products" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ProductData"/>
+    </entity>
     <entity name="SizeData" representedClassName="SizeData" syncable="YES" codeGenerationType="class">
         <attribute name="available" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="size" attributeType="String"/>
         <attribute name="sku" attributeType="String"/>
-        <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ProductData"/>
+        <relationship name="product" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProductData"/>
     </entity>
 </model>

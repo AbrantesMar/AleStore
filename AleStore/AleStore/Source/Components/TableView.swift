@@ -9,20 +9,21 @@ import Foundation
 import UIKit
 
 public protocol TableViewDelegate {
-    func selectedItem()
+    func selectedItem(indexPath: [Int])
 }
 
 public class TableView: UIView {
     
     public var delegate: TableViewDelegate?
+    private var selectedItem: Product?
     
-    private lazy var tableView: UITableView = {
+    public lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.isScrollEnabled = true
         tableView.separatorStyle = .singleLine
-        tableView.dataSource = self
-        tableView.delegate = self
+        tableView.dataSource = nil
+        tableView.delegate = nil
         tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: CustomTableViewCell.identifier)
         return tableView
     }()
@@ -52,22 +53,13 @@ extension TableView: ViewManager {
     }
 }
 
-extension TableView: UITableViewDelegate, UITableViewDataSource {
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
-    }
-    
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifier, for: indexPath) as? CustomTableViewCell
-        
-        return cell ?? UITableViewCell()
-    }
+extension TableView: UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 135
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.selectedItem()
+        delegate?.selectedItem(indexPath: [0])
     }
 }

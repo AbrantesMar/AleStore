@@ -32,4 +32,3 @@ public struct Product: Model {
         case installments, image, sizes
     }
 }
-

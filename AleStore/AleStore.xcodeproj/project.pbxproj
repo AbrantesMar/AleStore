@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		13E605A774ED3D2E710F4F57 /* Pods_Data_DataTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F243A49BC340E3C4C92DE228 /* Pods_Data_DataTests.framework */; };
+		150316292A2A2A4600942EE8 /* HttpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1597732C2A24385F00556BB4 /* HttpError.swift */; };
 		153EAEC12A22F2950078AF92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EAEC02A22F2950078AF92 /* AppDelegate.swift */; };
 		153EAEC32A22F2950078AF92 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EAEC22A22F2950078AF92 /* SceneDelegate.swift */; };
-		153EAEC52A22F2950078AF92 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EAEC42A22F2950078AF92 /* ViewController.swift */; };
 		153EAECB2A22F2950078AF92 /* AleStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 153EAEC92A22F2950078AF92 /* AleStore.xcdatamodeld */; };
 		153EAECD2A22F2970078AF92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 153EAECC2A22F2970078AF92 /* Assets.xcassets */; };
 		153EAED02A22F2970078AF92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 153EAECE2A22F2970078AF92 /* LaunchScreen.storyboard */; };
@@ -27,6 +27,7 @@
 		155EF8712A26FD7600450495 /* ViewController+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155EF8702A26FD7600450495 /* ViewController+CoreData.swift */; };
 		156C786C2A27108200AF449B /* HttpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1597732C2A24385F00556BB4 /* HttpError.swift */; };
 		156C786E2A27109700AF449B /* HttpManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1597732E2A243C1200556BB4 /* HttpManagerProtocol.swift */; };
+		157F21C42A2A2ED100FE0BEC /* HttpManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1597732E2A243C1200556BB4 /* HttpManagerProtocol.swift */; };
 		158002B92A29327F00198DDD /* ProductsResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B643C42A2318B8007D9471 /* ProductsResult.swift */; };
 		158002BA2A2939DE00198DDD /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B66D902A23D86E004F3719 /* Product.swift */; };
 		158002BB2A2939E800198DDD /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B66D962A23E930004F3719 /* Model.swift */; };
@@ -73,6 +74,13 @@
 		15B76ECF2A26EF3800DEE2B1 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B66D962A23E930004F3719 /* Model.swift */; };
 		15E9BB7507A7840F1A042C02 /* Pods_AleStoreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C05580001C7B35A7080D9745 /* Pods_AleStoreTests.framework */; };
 		15F006C42A29B42800BBA438 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F006C32A29B42800BBA438 /* MenuView.swift */; };
+		15F006C62A29BA1000BBA438 /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F006C52A29BA1000BBA438 /* ItemViewModel.swift */; };
+		15F006C72A2A182900BBA438 /* ProductRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B76EBF2A26B84A00DEE2B1 /* ProductRepository.swift */; };
+		15F006C92A2A1A9500BBA438 /* AleStoreContainerDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F006C82A2A1A9400BBA438 /* AleStoreContainerDI.swift */; };
+		15F006CE2A2A1C8D00BBA438 /* AleStoreFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F006CD2A2A1C8D00BBA438 /* AleStoreFactory.swift */; };
+		15F006CF2A2A1D1400BBA438 /* CatalogList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159773342A24F53B00556BB4 /* CatalogList.swift */; };
+		15F006D02A2A1D1D00BBA438 /* CatalogRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159773362A24F5A000556BB4 /* CatalogRequest.swift */; };
+		15F006D12A2A1D2300BBA438 /* AlamofireAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B66DA72A242546004F3719 /* AlamofireAdapter.swift */; };
 		15F4C85E2A29231A000A2D32 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F4C85D2A29231A000A2D32 /* TableView.swift */; };
 		15F4C8602A29237B000A2D32 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F4C85F2A29237B000A2D32 /* CustomTableViewCell.swift */; };
 		262A44E31F34EAFAAB0E7812 /* Pods_AleStore_AleStoreUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C430DD24F8DAB9C07112B /* Pods_AleStore_AleStoreUITests.framework */; };
@@ -167,7 +175,6 @@
 		153EAEBD2A22F2950078AF92 /* AleStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AleStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		153EAEC02A22F2950078AF92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		153EAEC22A22F2950078AF92 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		153EAEC42A22F2950078AF92 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		153EAECA2A22F2950078AF92 /* AleStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AleStore.xcdatamodel; sourceTree = "<group>"; };
 		153EAECC2A22F2970078AF92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		153EAECF2A22F2970078AF92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -179,6 +186,9 @@
 		153EAEE62A22F2970078AF92 /* AleStoreUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AleStoreUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1550AF742A25930E001E6949 /* Pods_Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		155EF8702A26FD7600450495 /* ViewController+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+CoreData.swift"; sourceTree = "<group>"; };
+		157F21C52A2A460800FE0BEC /* RxCocoa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxCocoa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		157F21C62A2A460800FE0BEC /* RxRelay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxRelay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		157F21C72A2A460800FE0BEC /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		158002BD2A293C6600198DDD /* ImageProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProduct.swift; sourceTree = "<group>"; };
 		158002C02A2948F600198DDD /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 		159095352A299CEC00CFBB77 /* AppDelegate+FlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+FlowController.swift"; sourceTree = "<group>"; };
@@ -213,6 +223,9 @@
 		15B76EC32A26B96400DEE2B1 /* BaseRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRepositoryProtocol.swift; sourceTree = "<group>"; };
 		15B76EC52A26CC5E00DEE2B1 /* RepositoryFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryFactory.swift; sourceTree = "<group>"; };
 		15F006C32A29B42800BBA438 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		15F006C52A29BA1000BBA438 /* ItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModel.swift; sourceTree = "<group>"; };
+		15F006C82A2A1A9400BBA438 /* AleStoreContainerDI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AleStoreContainerDI.swift; sourceTree = "<group>"; };
+		15F006CD2A2A1C8D00BBA438 /* AleStoreFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AleStoreFactory.swift; sourceTree = "<group>"; };
 		15F4C85D2A29231A000A2D32 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		15F4C85F2A29237B000A2D32 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		2E90508EEA0B6C200C1EC6CD /* Pods_Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -352,7 +365,6 @@
 				15B6435C2A22FE9E007D9471 /* Source */,
 				153EAEC02A22F2950078AF92 /* AppDelegate.swift */,
 				153EAEC22A22F2950078AF92 /* SceneDelegate.swift */,
-				153EAEC42A22F2950078AF92 /* ViewController.swift */,
 				153EAECC2A22F2970078AF92 /* Assets.xcassets */,
 				153EAECE2A22F2970078AF92 /* LaunchScreen.storyboard */,
 				153EAED12A22F2970078AF92 /* Info.plist */,
@@ -398,6 +410,7 @@
 		158002C52A29499100198DDD /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				15F006C52A29BA1000BBA438 /* ItemViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -451,10 +464,12 @@
 		15B6435C2A22FE9E007D9471 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				15F006CC2A2A1C6200BBA438 /* Helpers */,
 				159CAC7F2A2812B6008D3513 /* Components */,
 				15B6435D2A22FEFE007D9471 /* Screens */,
 				155EF8702A26FD7600450495 /* ViewController+CoreData.swift */,
 				159095352A299CEC00CFBB77 /* AppDelegate+FlowController.swift */,
+				15F006C82A2A1A9400BBA438 /* AleStoreContainerDI.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -628,6 +643,14 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
+		15F006CC2A2A1C6200BBA438 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				15F006CD2A2A1C8D00BBA438 /* AleStoreFactory.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		22304E9194F24A1CB154421F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -654,6 +677,9 @@
 		5CACB32BDD012F030F120A0E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				157F21C52A2A460800FE0BEC /* RxCocoa.framework */,
+				157F21C62A2A460800FE0BEC /* RxRelay.framework */,
+				157F21C72A2A460800FE0BEC /* RxSwift.framework */,
 				1550AF742A25930E001E6949 /* Pods_Domain.framework */,
 				8A5AFFC36D793502DE13096D /* Pods_AleStore.framework */,
 				A95C430DD24F8DAB9C07112B /* Pods_AleStore_AleStoreUITests.framework */,
@@ -702,6 +728,7 @@
 				153EAEB92A22F2950078AF92 /* Sources */,
 				153EAEBA2A22F2950078AF92 /* Frameworks */,
 				153EAEBB2A22F2950078AF92 /* Resources */,
+				9F3E40EB7A547993087FBA70 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -739,6 +766,7 @@
 				153EAEDC2A22F2970078AF92 /* Sources */,
 				153EAEDD2A22F2970078AF92 /* Frameworks */,
 				153EAEDE2A22F2970078AF92 /* Resources */,
+				F57A97102631C33CAAE33DC5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1189,6 +1217,40 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		9F3E40EB7A547993087FBA70 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AleStore/Pods-AleStore-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AleStore/Pods-AleStore-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AleStore/Pods-AleStore-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F57A97102631C33CAAE33DC5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AleStore-AleStoreUITests/Pods-AleStore-AleStoreUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AleStore-AleStoreUITests/Pods-AleStore-AleStoreUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AleStore-AleStoreUITests/Pods-AleStore-AleStoreUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1199,24 +1261,32 @@
 				15B643602A22FFC3007D9471 /* HomeViewController.swift in Sources */,
 				159CAC832A2821C5008D3513 /* ViewManager.swift in Sources */,
 				158002B92A29327F00198DDD /* ProductsResult.swift in Sources */,
+				15F006C62A29BA1000BBA438 /* ItemViewModel.swift in Sources */,
+				15F006C72A2A182900BBA438 /* ProductRepository.swift in Sources */,
 				159095362A299CEC00CFBB77 /* AppDelegate+FlowController.swift in Sources */,
 				158002BC2A2939F500198DDD /* Size.swift in Sources */,
+				15F006C92A2A1A9500BBA438 /* AleStoreContainerDI.swift in Sources */,
+				150316292A2A2A4600942EE8 /* HttpError.swift in Sources */,
 				159CAC872A285EC5008D3513 /* ProductItemView.swift in Sources */,
 				15B643632A230020007D9471 /* HomeViewModel.swift in Sources */,
 				15F006C42A29B42800BBA438 /* MenuView.swift in Sources */,
 				153EAECB2A22F2950078AF92 /* AleStore.xcdatamodeld in Sources */,
-				153EAEC52A22F2950078AF92 /* ViewController.swift in Sources */,
 				159095392A29AD1600CFBB77 /* ShopCartViewController.swift in Sources */,
 				158002C12A2948F600198DDD /* ItemViewController.swift in Sources */,
 				158002BE2A293C6600198DDD /* ImageProduct.swift in Sources */,
+				15F006CE2A2A1C8D00BBA438 /* AleStoreFactory.swift in Sources */,
 				158002BA2A2939DE00198DDD /* Product.swift in Sources */,
 				158002BB2A2939E800198DDD /* Model.swift in Sources */,
 				15F4C85E2A29231A000A2D32 /* TableView.swift in Sources */,
+				15F006D02A2A1D1D00BBA438 /* CatalogRequest.swift in Sources */,
+				15F006D12A2A1D2300BBA438 /* AlamofireAdapter.swift in Sources */,
 				155EF8712A26FD7600450495 /* ViewController+CoreData.swift in Sources */,
+				15F006CF2A2A1D1400BBA438 /* CatalogList.swift in Sources */,
 				15F4C8602A29237B000A2D32 /* CustomTableViewCell.swift in Sources */,
 				159CAC852A284DA6008D3513 /* IconButtonView.swift in Sources */,
 				153EAEC12A22F2950078AF92 /* AppDelegate.swift in Sources */,
 				153EAEC32A22F2950078AF92 /* SceneDelegate.swift in Sources */,
+				157F21C42A2A2ED100FE0BEC /* HttpManagerProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
