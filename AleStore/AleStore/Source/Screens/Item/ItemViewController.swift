@@ -66,19 +66,28 @@ public class ItemViewController: UIViewController {
     private lazy var buttonShopCar: UIButton = {
         let buttonView = UIButton()
         buttonView.translatesAutoresizingMaskIntoConstraints = false
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(self.addCar))
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(self.addInCart))
         buttonView.addGestureRecognizer(gesture)
         buttonView.isUserInteractionEnabled = true
+        buttonView.backgroundColor = .systemGreen
+        buttonView.setTitle("Adicionar no carrinho", for: .normal)
         return buttonView
+    }()
+    
+    private lazy var amountItemTextFeild: UITextField = {
+        let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.backgroundColor = .lightGray
+        return textField
     }()
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel?.getItems()
         setup()
     }
     
-    @objc func addCar() {
+    @objc func addInCart() {
+        viewModel?.addProductInCart()
         flowController?.toShopCartView()
     }
 
@@ -86,16 +95,29 @@ public class ItemViewController: UIViewController {
 
 extension ItemViewController: ViewManager {
     public func bindViewModel(){
-        viewModel?.regularPrice.bind(to: priceLabel.rx.text).disposed(by: disposeBag)
-        viewModel?.actualPrice.bind(to: actualPriceLabel.rx.text).disposed(by: disposeBag)
-        viewModel?.name.bind(to: titleLabel.rx.text).disposed(by: disposeBag)
-        viewModel?.imageUIImage.bind(to: imageProduct.imageView.rx.image).disposed(by: disposeBag)
-        viewModel?.isHiddenToOnSale.bind(to: imageProduct.viewSale.rx.isHidden).disposed(by: disposeBag)
-        viewModel?.isHiddenToOnSale.subscribe(onNext: { [weak self] in
+        guard let viewModel = viewModel else {
+            return
+        }
+        viewModel.regularPrice.bind(to: priceLabel.rx.text).disposed(by: disposeBag)
+        viewModel.actualPrice.bind(to: actualPriceLabel.rx.text).disposed(by: disposeBag)
+        viewModel.name.bind(to: titleLabel.rx.text).disposed(by: disposeBag)
+        viewModel.imageUIImage.bind(to: imageProduct.imageView.rx.image).disposed(by: disposeBag)
+        viewModel.isHiddenToOnSale.bind(to: imageProduct.viewSale.rx.isHidden).disposed(by: disposeBag)
+        viewModel.amount.bind(to: amountItemTextFeild.rx.text).disposed(by: disposeBag)
+        amountItemTextFeild.rx.controlEvent([.editingChanged])
+            .withLatestFrom(amountItemTextFeild.rx.text.orEmpty)
+            .subscribe(onNext: { result in
+                if !result.isEmpty {
+                    self.viewModel?.amountResult = Int(result)!
+                }
+        }).disposed(by: disposeBag)
+        /*viewModel.amount.subscribe(onNext: { [weak self] result in
+            self?.viewModel?.amountResult = Int(result)!
+        }).disposed(by: disposeBag)*/
+        viewModel.isHiddenToOnSale.subscribe(onNext: { [weak self] in
             self?.priceLabel.textColor = $0 ? .black : .lightGray
             self?.actualPriceLabel.isHidden = $0
         })
-        
     }
     
     public func viewHierarchy() {
@@ -107,6 +129,7 @@ extension ItemViewController: ViewManager {
         contentArea.addSubview(actualPriceLabel)
         contentArea.addSubview(priceLabel)
         contentArea.addSubview(buttonShopCar)
+        contentArea.addSubview(amountItemTextFeild)
     }
     
     public func setupConstraints() {
@@ -144,17 +167,23 @@ extension ItemViewController: ViewManager {
             actualPriceLabel.heightAnchor.constraint(equalToConstant: 20),
             actualPriceLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
             actualPriceLabel.leadingAnchor.constraint(equalTo: priceLabel.trailingAnchor),
-            actualPriceLabel.bottomAnchor.constraint(equalTo: buttonShopCar.bottomAnchor, constant: -20),
+            actualPriceLabel.bottomAnchor.constraint(equalTo: buttonShopCar.topAnchor, constant: -20),
 
             priceLabel.heightAnchor.constraint(equalToConstant: 20),
-            priceLabel.bottomAnchor.constraint(equalTo: buttonShopCar.bottomAnchor, constant: -20),
+            priceLabel.bottomAnchor.constraint(equalTo: buttonShopCar.topAnchor, constant: -20),
             priceLabel.leadingAnchor.constraint(equalTo: contentArea.leadingAnchor),
             
-            buttonShopCar.heightAnchor.constraint(equalToConstant: 20),
+            buttonShopCar.heightAnchor.constraint(equalToConstant: 50),
             buttonShopCar.topAnchor.constraint(equalTo: priceLabel.bottomAnchor),
             buttonShopCar.leadingAnchor.constraint(equalTo: contentArea.leadingAnchor),
-            buttonShopCar.widthAnchor.constraint(equalTo: contentArea.widthAnchor),
-            buttonShopCar.bottomAnchor.constraint(equalTo: contentArea.bottomAnchor, constant: -20)
+            buttonShopCar.bottomAnchor.constraint(equalTo: contentArea.bottomAnchor, constant: -20),
+            
+            amountItemTextFeild.heightAnchor.constraint(equalToConstant: 50),
+            amountItemTextFeild.widthAnchor.constraint(equalToConstant: 10),
+            amountItemTextFeild.topAnchor.constraint(equalTo: priceLabel.bottomAnchor),
+            amountItemTextFeild.leadingAnchor.constraint(equalTo: buttonShopCar.trailingAnchor),
+            amountItemTextFeild.widthAnchor.constraint(equalTo: contentArea.widthAnchor),
+            amountItemTextFeild.bottomAnchor.constraint(equalTo: contentArea.bottomAnchor, constant: -20)
         ])
     }
 }

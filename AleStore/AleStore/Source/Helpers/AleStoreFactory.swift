@@ -7,11 +7,12 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 public class AleStoreFactory {
-    static func makeRegisterServices() {
+    static func makeRegisterServices(context: NSManagedObjectContext) {
         let container = AleStoreContainerDI.shared
-        container.register(type: ProductRepositoryProtocol.self, service: ProductRepository())
+        container.register(type: ProductRepositoryProtocol.self, service: ProductRepository(context: context))
     }
     
     static func makeProductRepository() -> ProductRepositoryProtocol {

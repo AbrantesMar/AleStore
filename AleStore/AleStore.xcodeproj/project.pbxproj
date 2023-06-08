@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		13E605A774ED3D2E710F4F57 /* Pods_Data_DataTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F243A49BC340E3C4C92DE228 /* Pods_Data_DataTests.framework */; };
 		150316292A2A2A4600942EE8 /* HttpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1597732C2A24385F00556BB4 /* HttpError.swift */; };
+		1532BC1B2A30D8C500CD11D2 /* AleData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 15B643C02A23184B007D9471 /* AleData.xcdatamodeld */; };
+		1532BC1D2A312A8600CD11D2 /* MapProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1532BC1C2A312A8600CD11D2 /* MapProduct.swift */; };
+		1532BC1E2A3169C200CD11D2 /* MapProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1532BC1C2A312A8600CD11D2 /* MapProduct.swift */; };
+		1532BC1F2A316C7B00CD11D2 /* ProductRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B76EC12A26B89900DEE2B1 /* ProductRepositoryProtocol.swift */; };
 		153EAEC12A22F2950078AF92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EAEC02A22F2950078AF92 /* AppDelegate.swift */; };
 		153EAEC32A22F2950078AF92 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EAEC22A22F2950078AF92 /* SceneDelegate.swift */; };
 		153EAECB2A22F2950078AF92 /* AleStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 153EAEC92A22F2950078AF92 /* AleStore.xcdatamodeld */; };
@@ -172,6 +176,7 @@
 
 /* Begin PBXFileReference section */
 		09C8A3B8AC38D194305A15FF /* Pods-Infra.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Infra.release.xcconfig"; path = "Target Support Files/Pods-Infra/Pods-Infra.release.xcconfig"; sourceTree = "<group>"; };
+		1532BC1C2A312A8600CD11D2 /* MapProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapProduct.swift; sourceTree = "<group>"; };
 		153EAEBD2A22F2950078AF92 /* AleStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AleStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		153EAEC02A22F2950078AF92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		153EAEC22A22F2950078AF92 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -555,6 +560,7 @@
 			children = (
 				15B643BC2A231650007D9471 /* ExtensionsHelpers.swift */,
 				15B76EC52A26CC5E00DEE2B1 /* RepositoryFactory.swift */,
+				1532BC1C2A312A8600CD11D2 /* MapProduct.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1271,8 +1277,10 @@
 				15B643632A230020007D9471 /* HomeViewModel.swift in Sources */,
 				15F006C42A29B42800BBA438 /* MenuView.swift in Sources */,
 				153EAECB2A22F2950078AF92 /* AleStore.xcdatamodeld in Sources */,
+				1532BC1F2A316C7B00CD11D2 /* ProductRepositoryProtocol.swift in Sources */,
 				159095392A29AD1600CFBB77 /* ShopCartViewController.swift in Sources */,
 				158002C12A2948F600198DDD /* ItemViewController.swift in Sources */,
+				1532BC1E2A3169C200CD11D2 /* MapProduct.swift in Sources */,
 				158002BE2A293C6600198DDD /* ImageProduct.swift in Sources */,
 				15F006CE2A2A1C8D00BBA438 /* AleStoreFactory.swift in Sources */,
 				158002BA2A2939DE00198DDD /* Product.swift in Sources */,
@@ -1282,6 +1290,7 @@
 				15F006D12A2A1D2300BBA438 /* AlamofireAdapter.swift in Sources */,
 				155EF8712A26FD7600450495 /* ViewController+CoreData.swift in Sources */,
 				15F006CF2A2A1D1400BBA438 /* CatalogList.swift in Sources */,
+				1532BC1B2A30D8C500CD11D2 /* AleData.xcdatamodeld in Sources */,
 				15F4C8602A29237B000A2D32 /* CustomTableViewCell.swift in Sources */,
 				159CAC852A284DA6008D3513 /* IconButtonView.swift in Sources */,
 				153EAEC12A22F2950078AF92 /* AppDelegate.swift in Sources */,
@@ -1321,6 +1330,7 @@
 				15B76EC22A26B89900DEE2B1 /* ProductRepositoryProtocol.swift in Sources */,
 				156C786C2A27108200AF449B /* HttpError.swift in Sources */,
 				15B76EC42A26B96400DEE2B1 /* BaseRepositoryProtocol.swift in Sources */,
+				1532BC1D2A312A8600CD11D2 /* MapProduct.swift in Sources */,
 				15B643BD2A231650007D9471 /* ExtensionsHelpers.swift in Sources */,
 				159CAC7E2A27F4EC008D3513 /* AlamofireAdapter.swift in Sources */,
 				15B76EC02A26B84A00DEE2B1 /* ProductRepository.swift in Sources */,

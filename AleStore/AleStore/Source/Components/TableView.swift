@@ -22,6 +22,7 @@ public class TableView: UIView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.isScrollEnabled = true
         tableView.separatorStyle = .singleLine
+        tableView.allowsMultipleSelection = false
         tableView.dataSource = nil
         tableView.delegate = nil
         tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: CustomTableViewCell.identifier)

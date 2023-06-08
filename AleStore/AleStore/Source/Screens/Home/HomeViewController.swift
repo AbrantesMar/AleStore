@@ -13,6 +13,7 @@ public class HomeViewController: UIViewController, UIScrollViewDelegate {
     
     var viewModel: HomeViewModel?
     let disposeBag = DisposeBag()
+    var selectedFirst = false
     
     private lazy var contentArea: UIView = {
         let contentArea = UIView()
@@ -57,12 +58,12 @@ extension HomeViewController: ViewManager {
         
         tableView.tableView.rx.setDelegate(tableView.self).disposed(by: disposeBag)
         
-        viewModel?.products.bind(to: tableView.tableView.rx.items(cellIdentifier: CustomTableViewCell.identifier, cellType: CustomTableViewCell.self)) { [weak self] (row,item,cell) in
+        viewModel?.products.bind(to: tableView.tableView.rx.items(cellIdentifier: CustomTableViewCell.identifier, cellType: CustomTableViewCell.self)) { (row,item,cell) in
             cell.productView.titleLabel.text = item.name
             cell.productView.priceLabel.text = item.regularPrice
             cell.productView.priceSaleLabel.text = item.actualPrice
             cell.productView.saleLabel.isHidden = !item.onSale
-            //cell.productView.imageView.image = self?.viewModel.makeImageToUrlSession(urlString: item.image)
+            //cell.productView.imageView.image = HomeViewModel.makeImageToUrlSession(urlString: item.image)
         }.disposed(by: disposeBag)
     }
     public func viewHierarchy() {
@@ -95,17 +96,36 @@ extension HomeViewController: ViewManager {
 
 extension HomeViewController: MenuViewDelegate {
     public func goItensSale() {
+        guard let products = viewModel?.products else {
+            return
+        }
+        products.map{
+            $0.filter{ $0.onSale == true }
+        }
+        .subscribe(onNext: { item in
+            print(item)
+        })
+        
         self.tableView.tableView.reloadData()
-        //flowController?.toShopCartView()
+        //
     }
     
     public func goShopCar() {
-        flowController?.toItemView(indexPath: [0])
+        flowController?.toShopCartView()
     }
+    
 }
 
 extension HomeViewController: TableViewDelegate {
+    
     public func selectedItem(indexPath: [Int]) {
-        flowController?.toItemView(indexPath: indexPath)
+        tableView.tableView.rx.modelSelected(Product.self)
+            .subscribe(onNext: { [weak self] value in
+                if !(self?.selectedFirst ?? false) {
+                    self?.selectedFirst = true
+                    self?.flowController?.toItemView(product: value)
+                }
+            }).disposed(by: disposeBag)
+        self.selectedFirst = false
     }
 }

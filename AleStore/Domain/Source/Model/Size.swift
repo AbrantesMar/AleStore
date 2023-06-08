@@ -10,4 +10,10 @@ public struct Size: Model {
     var available: Bool
     var size: String
     var sku: String
+    
+    public init(available: Bool, size: String, sku: String) {
+        self.available = available
+        self.size = size
+        self.sku = sku
+    }
 }

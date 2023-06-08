@@ -17,27 +17,32 @@ public class ItemViewModel {
     public var actualPrice: PublishSubject<String> = PublishSubject()
     public var isHiddenToOnSale: PublishSubject<Bool> = PublishSubject()
     public var sizes: PublishSubject<[String]?> = PublishSubject()
+    public var amount: PublishSubject<String> = PublishSubject()
+    public var amountResult: Int?
+    public var product: Product
     
-    private var productRepositoryProtocol: ProductRepositoryProtocol
+    private var productRepository: ProductRepositoryProtocol
     
-    init(indexPath: [Int], productRepositoryProtocol: ProductRepositoryProtocol) {
-        self.indexPath.onNext(indexPath)
-        self.productRepositoryProtocol = productRepositoryProtocol
+    init(product: Product, productRepository: ProductRepositoryProtocol) {
+        self.productRepository = productRepository
+        self.product = product
+        setup(product: product)
     }
     
-    func getItems() {
-        self.productRepositoryProtocol.fetchProducts() { [weak self] result in
-            guard let result = result, let self = self else {
-                return
-            }
-            let itemRandom = Int.random(in: 1..<20)
-            self.image.onNext(result.products[itemRandom].image)
-            self.name.onNext(result.products[itemRandom].name)
-            self.regularPrice.onNext(result.products[itemRandom].regularPrice)
-            self.actualPrice.onNext(result.products[itemRandom].actualPrice)
-            self.isHiddenToOnSale.onNext(!result.products[itemRandom].onSale)
-            self.loadImage(for: result.products[itemRandom].image)
+    func setup(product: Product) {
+        DispatchQueue.main.async {
+            self.image.onNext(product.image)
+            self.name.onNext(product.name)
+            self.regularPrice.onNext(product.regularPrice)
+            self.actualPrice.onNext(product.actualPrice)
+            self.isHiddenToOnSale.onNext(!product.onSale)
+            self.loadImage(for: product.image)
+            self.amount.onNext("0")
         }
+    }
+    
+    func addProductInCart() {
+        productRepository.addProductInBase(product: self.product, amount: amountResult ?? 0)
     }
     
     func loadImage(for urlString: String) {

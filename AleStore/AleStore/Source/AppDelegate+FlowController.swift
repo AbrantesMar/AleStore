@@ -12,7 +12,11 @@ public class AppDelegateFlowController: UIViewController {
     public var navigation: UINavigationController?
     
     public override func viewDidLoad() {
-        AleStoreFactory.makeRegisterServices()
+        start()
+    }
+    
+    public func start() {
+        AleStoreFactory.makeRegisterServices(context: context)
         if self.navigation == nil {
             super.viewDidLoad()
             
@@ -30,19 +34,10 @@ public class AppDelegateFlowController: UIViewController {
         return self
     }
     
-    public func toItemView(indexPath: [Int]) {
+    public func toItemView(product: Product) {
         let view = ItemViewController()
-        AleStoreFactory.makeRegisterServices()
-        let viewModel = ItemViewModel(indexPath: indexPath, productRepositoryProtocol: AleStoreFactory.makeProductRepository())
-        viewModel.getItems()
-        view.viewModel = viewModel
-        navigation?.pushViewController(view, animated: true)
-    }
-    
-    public func toItemView() {
-        let view = ItemViewController()
-        AleStoreFactory.makeRegisterServices()
-        let viewModel = ItemViewModel(indexPath: [0], productRepositoryProtocol: AleStoreFactory.makeProductRepository())
+        AleStoreFactory.makeRegisterServices(context: context)
+        let viewModel = ItemViewModel(product: product, productRepository: AleStoreFactory.makeProductRepository())
         view.viewModel = viewModel
         navigation?.pushViewController(view, animated: true)
     }
@@ -53,7 +48,7 @@ public class AppDelegateFlowController: UIViewController {
     }
     
     public func didBackView() {
-        navigation?.popViewController(animated: true)
+        navigation?.popToRootViewController(animated: true)
     }
     
     @objc func addTapped() {

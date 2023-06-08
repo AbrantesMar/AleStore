@@ -34,6 +34,47 @@ final class DataTests: XCTestCase {
         wait(for: [exp], timeout: 10)
     }
     
+    var resultProduct: Product?
+    func test_make_insert_product_shop_cart_in_base_data() {
+        appContext = createInMemoryManagedObjectContext()
+        let exp = expectation(description: "waiting")
+        RepositoryFactory.makeProductResult() { [weak self] result in
+            guard let self = self,
+                    let context = appContext,
+                    let productApi = result.products.first else {
+                XCTFail("resultado da api está vazia!")
+                exp.fulfill()
+                return
+            }
+            let productRepository = ProductRepository(context: context)
+            
+            self.resultProduct = productApi
+            if let resultProduct = self.resultProduct {
+                productRepository.addProductInBase(product: resultProduct, amount: 3)
+                XCTAssertTrue(true)
+            }
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 10)
+        let exp2 = expectation(description: "waiting")
+        RepositoryFactory.makeShopCartDataToGetInfo(context: appContext!) { [weak self] result in
+            XCTAssertNotNil(result)
+            guard let self = self,
+                    let result = result,
+                    let productResult = result.products,
+                  let resultProduct = self.resultProduct else {
+                XCTFail("Não foi possível resgatar dados do banco!")
+                exp2.fulfill()
+                return
+            }
+            XCTAssertTrue(resultProduct.actualPrice == productResult.actualPrice)
+            exp2.fulfill()
+        }
+        wait(for: [exp2], timeout: 10)
+        
+        
+    }
+    
     func createInMemoryManagedObjectContext() -> NSManagedObjectContext? {
         let bundle = Bundle(for: RootData.self)
         guard let managedObjectModel = NSManagedObjectModel.mergedModel(from: [bundle]) else { return nil }

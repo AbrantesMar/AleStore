@@ -8,28 +8,29 @@
 import Foundation
 import CoreData
 
-public protocol ProductRepositoryProtocol {
-    func fetchProducts(completion: @escaping (ProductsResult?) -> Void)
-    func fetchImageProduct(for urlString: String, completion: @escaping (Data?) -> Void)
-}
+public class ProductRepository: ProductRepositoryProtocol {
 
-public final class ProductRepository: ProductRepositoryProtocol {
-
-    //private var context: NSManagedObjectContext
+    private var context: NSManagedObjectContext
     
-    public init() {
-        
+    public init(context: NSManagedObjectContext) {
+        self.context = context
     }
-    
+
     public func fetchProducts(completion: @escaping (ProductsResult?) -> Void) {
         let catalogList = CatalogList()
-        catalogList.getList() { response in
-            guard let product = response else {
-                completion(nil)
-                return
+        catalogList.getList() { [weak self] response in
+            self?.handleFetchProductsResult(response: response) { result in
+                completion(result)
             }
-            completion(product)
         }
+    }
+
+    public func handleFetchProductsResult(response: ProductsResult?, completion: @escaping (ProductsResult?) -> Void) {
+        guard let product = response else {
+            completion(nil)
+            return
+        }
+        completion(product)
     }
     
     public func fetchImageProduct(for urlString: String, completion: @escaping (Data?) -> Void) {
@@ -45,5 +46,25 @@ public final class ProductRepository: ProductRepositoryProtocol {
             }
         }
         task.resume()
+    }
+    
+    public func addProductInBase(product: Product, amount: Int) {
+        let product = MapProduct.makeProductModelToProductData(context: context, product: product)
+        let shopCartData = ShopCart(context: context)
+        shopCartData.amount = Int16(amount)
+        shopCartData.products = product
+        saveContext()
+    }
+    
+    public func deleteProductInBase(product: Product) {
+        
+    }
+    
+    public func saveContext() {
+        do {
+          try context.save()
+         } catch {
+          print("Error saving")
+        }
     }
 }

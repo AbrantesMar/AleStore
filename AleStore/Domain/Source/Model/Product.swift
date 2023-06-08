@@ -31,4 +31,19 @@ public struct Product: Model {
         case discountPercentage = "discount_percentage"
         case installments, image, sizes
     }
+    
+    public init(name: String, style: String, codeColor: String, colorSlug: String, color: String, image: String, onSale: Bool, regularPrice: String, actualPrice: String, discountPercentage: String, installments: String) { //sizes: [Size]) {
+        self.name = name
+        self.style = style
+        self.codeColor = codeColor
+        self.colorSlug = colorSlug
+        self.color = color
+        self.image = image
+        self.onSale = onSale
+        self.regularPrice = regularPrice
+        self.actualPrice = actualPrice
+        self.discountPercentage = discountPercentage
+        self.installments = installments
+        self.sizes = [Size(available: false, size: "", sku: "")]
+    }
 }

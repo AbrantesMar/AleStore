@@ -12,30 +12,31 @@ import Infra
 
 class RepositoryFactory {
     static func makeRootToData() -> ProductsResult? {
-        var root = RootData()
-        var product = ProductData()
-        var rootDomain: Any? = nil
+        let root = RootData()
         
         for case let product as ProductData? in root.products ?? [] {
             guard let product = product else {
                 return nil
             }
             for case let size as SizeData? in product.sizes ?? [] {
-                guard let size = size else {
+                guard size != nil else {
                     return nil
                 }
-                //var sizeDomain = Size()
-                
             }
-            print(product ?? "")
         }
         return nil
         
     }
     
-    //static func makeCleanCoreData(context: NSManagedObjectContext, completion: @escaping (RootData) -> Void) {
-    //    context.delete(<#T##object: NSManagedObject##NSManagedObject#>)
-    //}
+    static func makeProductResult(completion: @escaping (ProductsResult) -> Void) {
+        let catalogList = CatalogList()
+        catalogList.getList() { response in
+            guard let response = response else {
+                return
+            }
+            completion(response)
+        }
+    }
     
     static func makeRootApiToData(context: NSManagedObjectContext, completion: @escaping (RootData) -> Void) {
         let catalogList = CatalogList()
@@ -78,13 +79,6 @@ class RepositoryFactory {
     }
     
     static func makeRootDataToGetInfo(context: NSManagedObjectContext, completion: @escaping (RootData?) -> Void) {
-        /*var request = NSFetchRequest<RootData>(entityName: "RootData")
-        var error: NSError?
-        if let entities = context.executeFetchRequest(request, error: &error) as? RootData {
-            if entities.count > 0 {
-                return entities
-            }
-        }*/
         makeRootApiToData(context: context) { _ in
             let root: NSFetchRequest<RootData> = RootData.fetchRequest()
             let sortByDate = NSSortDescriptor(key: #keyPath(RootData.products), ascending: false)
@@ -96,8 +90,21 @@ class RepositoryFactory {
                 print("Fetch error: \(error) description: \(error.userInfo)")
                 completion(nil)
             }
-            
-            
+        }
+    }
+    
+    static func makeShopCartDataToGetInfo(context: NSManagedObjectContext, completion: @escaping (ShopCart?) -> Void) {
+        makeRootApiToData(context: context) { _ in
+            let root: NSFetchRequest<ShopCart> = ShopCart.fetchRequest()
+            let sortByDate = NSSortDescriptor(key: #keyPath(ShopCart.amount), ascending: false)
+            root.sortDescriptors = [sortByDate]
+            do {
+                let results = try context.fetch(root)
+                completion(results.first)
+            } catch let error as NSError {
+                print("Fetch error: \(error) description: \(error.userInfo)")
+                completion(nil)
+            }
         }
     }
 }
