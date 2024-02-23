@@ -17,7 +17,6 @@ install:
 
 clean:
 	killall Xcode
-	rm Podfile
 	rm Podfile.lock
 	rm -R AleStore.xcworkspace
 	rm -R Pods
